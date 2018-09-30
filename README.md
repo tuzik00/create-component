@@ -1,5 +1,5 @@
 Установка:
-npm install -g createComponent
+npm install -g create-component
 
 Использование:
 create-component -d dirname -f templatename -c name=test (по желанию)
