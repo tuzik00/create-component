@@ -1,0 +1,50 @@
+<template ext="jsx">
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+
+import './%NAME%.styl';
+
+
+class %NAME% extends PureComponent {
+    static blockClassName = '%NAME%';
+
+    static propTypes = {
+        className: PropTypes.string,
+        children: PropTypes.node
+    };
+
+    static defaultProps = {};
+
+
+    render() {
+        const { children, className } = this.props;
+
+        const classNames = cn(
+            %NAME%.blockClassName,
+            className
+        );
+
+        return (
+            <div className={classNames}>
+                {children}
+            </div>
+        );
+    }
+}
+
+
+export default %NAME%;
+</template>
+
+
+<template ext="styl">
+.%NAME% {}
+</template>
+
+
+<template ext="json" name="package">
+{
+  "main": "%NAME%.jsx"
+}
+</template>

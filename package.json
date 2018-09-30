@@ -1,0 +1,19 @@
+{
+  "name": "create-component",
+  "version": "0.1.0",
+  "description": "create component",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "create-component": "./index.js"
+  },
+   "files": [
+    "index.js"
+  ],
+  "preferGlobal": true,
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {}
+}

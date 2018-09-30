@@ -1,0 +1,51 @@
+<template ext="jsx">
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+
+import './%NAME%.styl';
+
+
+const %NAME% = (props) => {
+    const { children, className } = props;
+
+    const classNames = cn(
+        %NAME%.blockClassName,
+        className
+    );
+
+    return (
+        <div className={classNames}>
+            {children}
+        </div>
+    );
+};
+
+
+%NAME%.blockClassName = '%NAME%';
+
+
+%NAME%.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node
+};
+
+
+%NAME%.defaultProps = {};
+
+
+export default %NAME%;
+</template>
+
+
+<template ext="styl">
+.%NAME% {}
+</template>
+
+
+<template ext="json" name="package">
+{
+  "main": "%NAME%.jsx"
+}
+</template>
