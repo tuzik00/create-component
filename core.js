@@ -83,12 +83,12 @@ module.exports = {
         })
     },
 
-    parseContext(context = '') {
-        return context.split(',')
-            .reduce((context, item) => {
+    parseVars(vars = '') {
+        return vars.split(',')
+            .reduce((result, item) => {
                 const [name, value] = item.split('=');
-                context[name] = value;
-                return context;
+                result[name] = value;
+                return result;
             }, {})
     }
 };

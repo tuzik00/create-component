@@ -6,7 +6,7 @@ const {
 
 
 class AbstractBuilder {
-    constructor(props) {
+    constructor(props, options = {}) {
 
     }
 
@@ -17,31 +17,31 @@ class AbstractBuilder {
 
 
 class FileBuilder extends AbstractBuilder {
-    constructor(props, options = {}) {
-        super(props);
+    constructor(params, options = {}) {
+        super(params);
 
         this.options = {
-            context: {},
+            vars: {},
             ...options
         };
 
         this.attrs = {
-            name: this.options.dirName,
-            ...props.attributes
+            name: this.options.componentName,
+            ...params.attributes
         };
 
-        this.content = easyTemplate(props.content, this.options.context);
+        this.content = easyTemplate(params.content, this.options.vars);
     }
 
     build() {
-        const { dirName } = this.options;
+        const { componentName } = this.options;
         const { name, ext } = this.attrs;
 
-        const path = `${dirName}/${name}.${ext}`;
+        const filePath = `${componentName}/${name}.${ext}`;
 
-        return makeDir(dirName)
-            .then(() => createFile(path, this.content))
-            .then(() => path)
+        return makeDir(componentName)
+            .then(() => createFile(filePath, this.content))
+            .then(() => filePath)
     }
 }
 

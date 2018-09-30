@@ -2,11 +2,11 @@ const { FileBuilder } = require('./builders');
 
 
 class TagFactory {
-    constructor(params = {}) {
+    constructor(options = {}) {
         this.options = {
-            context: {},
-            dirName: null,
-            ...params
+            vars: {},
+            componentName: null,
+            ...options
         };
     }
 
@@ -14,8 +14,8 @@ class TagFactory {
         switch (tag) {
             case 'template':
                 return new FileBuilder({
-                    attributes,
-                    content
+                    content,
+                    attributes
                 }, this.options)
         }
     };

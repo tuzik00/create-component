@@ -11,7 +11,7 @@ const {
     attrStrToObject,
     readFile,
     readDir,
-    parseContext
+    parseVars
 } = require('./core');
 
 const {
@@ -21,21 +21,21 @@ const {
     TEMPLATE_DIR,
 } = require('./constants');
 
-const example = () => info('Example: create-component -d dirname -t templatename -c var1=True,var2=test');
+const example = () => info('Example: create-component -c componentname -t templatename -v test=True,test2=test');
 
 
 init({
-    dirName: argv.dirname || argv.d || example(),
+    componentName: argv.componentname || argv.c || example(),
     templateName: argv.templatename || argv.t || example(),
-    context: parseContext(argv.context || argv.c)
+    vars: parseVars(argv.vars || argv.v)
 });
 
 
-function init({dirName, templateName, context}) {
-    const tagFactory = new TagFactory({context, dirName});
+function init({componentName, templateName, vars}) {
+    const tagFactory = new TagFactory({ componentName, vars });
 
     readTemplate(TEMPLATE_DIR, templateName)
-        .then((template) => parseTags(template, dirName))
+        .then((template) => parseTags(template, componentName))
         .then((tags) => buildTags(tags, tagFactory))
         .then(buildSuccess)
         .catch(error)
@@ -56,10 +56,10 @@ function readTemplate(templateDir, templateName) {
 }
 
 
-function parseTags(templateStr, dirName) {
+function parseTags(templateStr, componentName) {
     const tags = [];
 
-    templateStr.replace(NAME_TAG_REG_EXP, dirName)
+    templateStr.replace(NAME_TAG_REG_EXP, componentName)
         .match(TEMPLATE_REG_EXP)
         .forEach((template) => {
             template
