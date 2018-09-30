@@ -3,7 +3,7 @@ const path = require('path');
 
 const TEMPLATE_REG_EXP = /^<([a-z]+)(\s.+)?>((.+|[\n\s])+?)<\/[a-z]+>$/gm;
 
-const EXT_REG_EXP = /\.tml/;
+const EXT_REG_EXP = /\..+/;
 
 const NAME_TAG_REG_EXP = /%NAME%/g;
 
