@@ -4,7 +4,7 @@ npm install -g create-component
 Использование:
 create-component -d dirname -f templatename -c name=test (опционально)
 
--d,--dirname - название дириктории (компонента);
+-d,--dirname - название директории (компонента);
 -t, --templatename - используемый шаблон (название шаблона);
 -c, --context - переменные в шаблоне.
 
