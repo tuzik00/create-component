@@ -8,10 +8,13 @@ import './%NAME%.styl';
 
 
 const %NAME% = (props) => {
-    const { children, className } = props;
+    const {
+        children,
+        className,
+    } = this.props;
 
     const classNames = cn(
-        %NAME%.blockClassName,
+        %NAME%.displayName,
         className
     );
 
@@ -23,7 +26,7 @@ const %NAME% = (props) => {
 };
 
 
-%NAME%.blockClassName = '%NAME%';
+%NAME%.displayName = '%NAME%';
 
 
 %NAME%.propTypes = {

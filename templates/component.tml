@@ -8,7 +8,7 @@ import './%NAME%.styl';
 
 
 class %NAME% extends Component {
-    static blockClassName = %NAME%;
+    static displayName = '%NAME%';
 
     static propTypes = {
         className: PropTypes.string,
@@ -31,10 +31,13 @@ class %NAME% extends Component {
 
 
     render() {
-        const { children, className } = this.props;
+        const {
+            children,
+            className,
+        } = this.props;
 
         const classNames = cn(
-            %NAME%.blockClassName,
+            %NAME%.displayName,
             className
         );
 
